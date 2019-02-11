@@ -36,3 +36,6 @@ add_library(leidenalg
         src/SurpriseVertexPartition.cpp)
 
 target_link_libraries(leidenalg igraph)
+
+set_target_properties(leidenalg PROPERTIES COMPILE_FLAGS
+                      "-Wno-unused-parameter -Wno-endif-labels -Wno-sign-compare")
