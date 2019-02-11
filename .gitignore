@@ -30,3 +30,6 @@ massif*
 .vscode/
 *.code-workspace
 PACKAGE.txt
+
+cmake-build-debug
+.idea
