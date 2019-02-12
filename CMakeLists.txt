@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.0)
 project(leidenalg)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -15,9 +15,6 @@ add_library(leidenalg
         include/ModularityVertexPartition.h
         include/MutableVertexPartition.h
         include/Optimiser.h
-        include/pynterface.h
-        include/python_optimiser_interface.h
-        include/python_partition_interface.h
         include/RBConfigurationVertexPartition.h
         include/RBERVertexPartition.h
         include/ResolutionParameterVertexPartition.h
