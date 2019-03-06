@@ -32,6 +32,7 @@ add_library(leidenalg
         src/SignificanceVertexPartition.cpp
         src/SurpriseVertexPartition.cpp)
 
+SET(CMAKE_EXE_LINKER_FLAGS "-static")
 target_link_libraries(leidenalg igraph)
 
 set_target_properties(leidenalg PROPERTIES COMPILE_FLAGS
