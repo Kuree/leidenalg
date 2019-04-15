@@ -25,7 +25,7 @@ find_library (IGRAPH_LIBRARIES NAMES libigraph.a igraph
         PATHS ${CMAKE_EXTRA_LIBRARIES} PATH_SUFFIXES igraph/ NO_DEFAULT_PATH
         )
 if(NOT IGRAPH_LIBRARIES)
-    find_library (IGRAPH_LIBRARIES NAMES ligigraph.a igraph
+    find_library (IGRAPH_LIBRARIES NAMES libigraph.a igraph
             PATHS /usr/local/lib /usr/lib /lib /sw/lib ${CMAKE_EXTRA_LIBRARIES} PATH_SUFFIXES igraph/
             )
 endif(NOT IGRAPH_LIBRARIES)
