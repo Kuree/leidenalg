@@ -34,7 +34,10 @@ add_library(leidenalg
 
 SET(CMAKE_EXE_LINKER_FLAGS "-static")
 target_link_libraries(leidenalg PRIVATE ${IGRAPH_LIBRARIES})
+CHECK_CXX_COMPILER_FLAG(-static-libgcc STATIC)
+if (${STATIC})
 target_link_libraries(leidenalg PUBLIC -static-libgcc -static-libstdc++)
+endif()
 
 set_target_properties(leidenalg PROPERTIES COMPILE_FLAGS
                       "-Wno-unused-parameter -Wno-endif-labels -Wno-sign-compare")
