@@ -9,6 +9,14 @@
 ## -----------------------------------------------------------------------------
 ## Check for the header files
 
+# Keyi:
+# try to use shared library first on osx
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set(IGRAPH_NAME igraph)
+else()
+    set(IGRAPH_NAME libigraph.a igraph)
+endif()
+
 find_path (IGRAPH_INCLUDES igraph.h
         PATHS ${CMAKE_EXTRA_INCLUDES} PATH_SUFFIXES igraph/ igraph/include NO_DEFAULT_PATH
         )
@@ -21,11 +29,11 @@ endif(NOT IGRAPH_INCLUDES)
 ## -----------------------------------------------------------------------------
 ## Check for the library
 
-find_library (IGRAPH_LIBRARIES NAMES libigraph.a igraph
+find_library (IGRAPH_LIBRARIES NAMES ${IGRAPH_NAME}
         PATHS ${CMAKE_EXTRA_LIBRARIES} PATH_SUFFIXES igraph/ NO_DEFAULT_PATH
         )
 if(NOT IGRAPH_LIBRARIES)
-    find_library (IGRAPH_LIBRARIES NAMES libigraph.a igraph
+    find_library (IGRAPH_LIBRARIES NAMES ${IGRAPH_NAME}
             PATHS /usr/local/lib /usr/lib /lib /sw/lib ${CMAKE_EXTRA_LIBRARIES} PATH_SUFFIXES igraph/
             )
 endif(NOT IGRAPH_LIBRARIES)
@@ -49,7 +57,7 @@ if (IGRAPH_INCLUDES AND IGRAPH_LIBRARIES)
     endif()
 else (IGRAPH_INCLUDES AND IGRAPH_LIBRARIES)
     if (NOT IGRAPH_FIND_QUIETLY)
-        if (NOT IGRAPH_INCLUDES)
+        if (N${IGRAPH_NAME})
             message (STATUS "Unable to find IGRAPH header files!")
         endif (NOT IGRAPH_INCLUDES)
         if (NOT IGRAPH_LIBRARIES)
