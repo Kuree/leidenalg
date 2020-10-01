@@ -17,11 +17,11 @@ else()
     set(IGRAPH_NAME libigraph.a igraph)
 endif()
 
-find_path (IGRAPH_INCLUDES igraph.h
+find_path (IGRAPH_INCLUDES igraph/igraph.h
         PATHS ${CMAKE_EXTRA_INCLUDES} PATH_SUFFIXES igraph/ igraph/include NO_DEFAULT_PATH
         )
 if(NOT IGRAPH_INCLUDES)
-    find_path (IGRAPH_INCLUDES igraph.h
+    find_path (IGRAPH_INCLUDES igraph/igraph.h
             PATHS /usr/local/include /usr/include /include /sw/include /usr/lib /usr/lib64 /usr/lib/x86_64-linux-gnu/ ${CMAKE_EXTRA_INCLUDES} PATH_SUFFIXES igraph/ igraph/include
             )
 endif(NOT IGRAPH_INCLUDES)
